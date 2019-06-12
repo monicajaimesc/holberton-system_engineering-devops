@@ -1,1 +1,2 @@
-this is 0x00-shell basics readme.md 
+$ ./0-current_working_directory
+/home/vagrant/holberton-system_engineering-devops/0x00-shell_basics
