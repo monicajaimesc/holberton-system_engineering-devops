@@ -1,2 +1,2 @@
 #!/bin/bash
-grep shred *.js
+rm *.js
