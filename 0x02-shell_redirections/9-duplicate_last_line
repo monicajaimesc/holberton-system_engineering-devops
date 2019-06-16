@@ -1,2 +1,2 @@
 #!/bin/bash
-cat > cat iacta
+cat > cat iacta > cat
