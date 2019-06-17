@@ -1,2 +1,2 @@
 #!/bin/bash
-tr -s '[A,C]' 'Z' 
+tr Ac Ze
