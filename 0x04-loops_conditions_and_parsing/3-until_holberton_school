@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
-# This script is displaying "Holberton School" 10 times
-n=0
-until [ $n -ge 10 ]
+# This script display "Holberton School" 10 times
+i="0"
+# ge is greater than or equal to
+until [ $i -ge 10 ];
 do
     echo "Holberton School"
-    let n++
+    (( i++))
 done
