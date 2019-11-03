@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# This script display 'holberton school' plus "good luck
+# and 'bad luck'
 
 i="0"
 while [ $i -lt 10 ];
