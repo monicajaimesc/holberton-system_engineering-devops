@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # This script display numbers and phrases
 
-i="0"
+i="1"
 # le is less or equal
 while [ $i -le 20 ];
     do
