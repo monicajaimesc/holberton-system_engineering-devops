@@ -12,4 +12,8 @@ while [ $HOUR -le 12 ];
             (( MIN++))
         done
         (( HOUR++))
+<<<<<<< HEAD
 done
+=======
+done
+>>>>>>> f3e62a12d496e1b3083957acbe7d0f8fee8adef0
