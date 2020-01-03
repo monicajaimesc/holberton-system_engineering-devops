@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# script for debugging Nginx installation from listening on port 80
+sudo apt install curl -y
+sed -i '0,/listen.*/s/listen.*/listen 80 default_server;/' /etc/nginx/sites-enabled/default
+pkill nginx
+service nginx restart
+
