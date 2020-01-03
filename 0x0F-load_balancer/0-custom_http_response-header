@@ -1,11 +1,7 @@
 #!/usr/bin/env bash
-# A Bash script that configures the Nginx so that its HTTP response contains a custom header
+# A Bash script that configures the Nginx so that web-02 to be identical to web-01
 apt-get update
 apt-get -y install nginx
-ufw allow 'Nginx HTTP'
-echo "Holberton School" > /var/www/html/index.nginx-debian.html
-
-text="rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;"
-sed -i "/listen 80 default_server/a rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;" /etc/nginx/sites-available/default
-sed -i "/listen 80 default_server/a error_page 404 /custom_404.html;location = /custom_404.html {root /usr/share/nginx/html;internal;}" /etc/nginx/sites-available/default
-sed -i "/listen 80 default_server/a add_header X-Served-By $HOSTNAME;" /etc/nginx/sites-available/default
+sed -i "31 i \\\n\tadd_header X-Served-By $HOSTNAME;\n" \
+    /etc/nginx/sites-available/default
+service nginx restart
