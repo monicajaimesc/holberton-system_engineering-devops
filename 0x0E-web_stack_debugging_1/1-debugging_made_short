@@ -2,5 +2,4 @@
 # NGINX debug short version
 ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 service nginx start
-pkill -o nginx
-
+rm /run/nginx.pid
