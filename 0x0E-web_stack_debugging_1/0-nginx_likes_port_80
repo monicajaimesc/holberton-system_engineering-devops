@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# script for debugging Nginx installation from listening on port 80
+# script of debugging Nginx installation from listening on port 80
 sed -i "21s/.*/\tlisten 80 default_server;/" /etc/nginx/sites-enabled/default
 sed -i "22s/.*/\tlisten [::]:80 default_server ipv6only=on;/" /etc/nginx/sites-enabled/default
 service nginx restart
