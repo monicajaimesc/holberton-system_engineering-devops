@@ -1,13 +1,18 @@
 #!/usr/bin/env bash
 # HTTP header response in nginx with puppet
 
-exec { 'update':
+exec { 'apt-get update':
   command => '/usr/bin/apt-get -y update',
 }
 
 package { 'nginx':
   ensure  => installed,
-  require => Exec['update']
+  require => Exec['apt-get update']
+}
+
+service { "nginx":
+  ensure  => running,
+  require => Package['nginx']
 }
 
 file_line { 'redirect':
@@ -31,7 +36,3 @@ file { '/var/www/html/index.html':
   require => Package['nginx'],
 }
 
-service { 'nginx':
-  ensure  => running,
-  require => Package['nginx'],
-}
