@@ -1,15 +1,20 @@
 #!/usr/bin/env bash
 # HTTP header response in nginx with puppet
-exec { 'apt-get update':
+
+exec { 'update':
   command => '/usr/bin/apt-get -y update',
 }
-Package { "ngnix":
-        ensure => present,
-        require => Exec['apt-get update']
+
+package { 'nginx':
+  ensure  => installed,
+  require => Exec['update']
 }
 
-service { "nginx":
-  ensure  => running,
+file_line { 'redirect':
+  ensure   => 'present',
+  path     => '/etc/nginx/sites-available/default',
+  after    => 'server_name _;',
+  line     => 'rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;',
   require => Package['nginx'],
 }
 
@@ -21,4 +26,12 @@ file_line { 'header':
   require => Package['nginx'],
 }
 
+file { '/var/www/html/index.html':
+  content => 'Holberton School',
+  require => Package['nginx'],
+}
 
+service { 'nginx':
+  ensure  => running,
+  require => Package['nginx'],
+}
