@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # script to run Ngnix user 
-sudo chmod 404 /etc/nginx/nginx.conf
+sudo chmod 777 /etc/nginx/nginx.conf
 pkill -9 apache2
 sed -i 's/80/8080/g' /etc/nginx/sites-enabled/default
 sudo -u nginx service nginx start
