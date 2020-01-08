@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# bash script htat accepts one argument
+
+echo "$1"
