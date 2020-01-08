@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 # configuration of domain and subdomain
 
-subdomain="$2"
-domain="$1"
+confi_domain_subdomain () {
+  if [ -z $2 ]; then
+    dig www.$1 | awk 'f;/ANSWER SECTION:/{f=1}' | head -n 1 | awk '{print "The subdomain www is a " $4 " record and points to " $5}'
+    dig lb-01.$1 | awk 'f;/ANSWER SECTION:/{f=1}' | head -n 1 | awk '{print "The subdomain lb-01 is a " $4 " record and points to " $5}'
+    dig web-01.$1 | awk 'f;/ANSWER SECTION:/{f=1}' | head -n 1 | awk '{print "The subdomain web-01 is a " $4 " record and points to " $5}'
+    dig web-02.$1 | awk 'f;/ANSWER SECTION:/{f=1}' | head -n 1 | awk '{print "The subdomain web-02 is a " $4 " record and points to " $5}'
+  else
+    printf "The subdomain %s is a " "$2"
+    dig "$2.$1" | awk 'f;/ANSWER SECTION:/{f=1}' | head -n 1 | awk '{print $4 " record and points to " $5}'
+  fi
+}
 
-if [ $# = 1 ];
-then
-    for x in "www" "lb-01" "web-01" "web-02"; do
-	dig $x.$domain | grep -A1 'ANSWER SECTION:' > "file"
-	awk -v x="$x" 'NR == 2 {print "The subdomain "x" is a "$4" record and points to "$5}' file
-    done
-else
-    dig $subdomain.$domain | grep -A1 'ANSWER SECTION:' > "file"
-    awk -v x="$subdomain" 'NR == 2 {print "The subdomain "x" is a "$4" record and points to "$5}' file
-fi
+confi_domain_subdomain "$1" "$2"
