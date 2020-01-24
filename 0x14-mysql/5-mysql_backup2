@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Mysql dump in a compressed archi.targ 
+date=$(date +%d-%m-%Y)
+mysqldump -u root  -p "$1" --all-databases > backup.sql
+tar -zcvf "$date".tar.gz backup.sql
