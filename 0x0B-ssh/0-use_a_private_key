@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # Connect to a server using private key
-ssh -i ~/.ssh/holberton ubuntu@34.74.142.196
+ssh -i ~/.ssh/holberton ubuntu@35.196.203.178
 

@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-echo "$1"
-if [[ "$(whoami)" != "any_name" ]]; then
-  echo "Only user 'any_name' can run this script."
-  exit 1
-fi
-
