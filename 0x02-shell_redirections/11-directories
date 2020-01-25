@@ -1,2 +1,4 @@
 #!/bin/bash
+# script that counts the number of 
+# directories and sub-directories in the current director
 find . -type d -mindepth 1 | wc -l

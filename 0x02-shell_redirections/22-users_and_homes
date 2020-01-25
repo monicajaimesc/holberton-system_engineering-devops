@@ -1,2 +1,4 @@
 #!/bin/bash
+#  script that displays all users and 
+# their home directories, sorted by users.
 cut -f 1,6 -d ':' /etc/passwd | sort -d
