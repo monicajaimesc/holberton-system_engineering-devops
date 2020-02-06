@@ -3,6 +3,7 @@
 this file contain a function that query the reddit API
 for tittle of the first 10 hot posts lists
 """
+import requests
 
 
 def top_ten(subreddit):
@@ -13,7 +14,7 @@ def top_ten(subreddit):
     listed for a given subreddit
     """
     # setting custom User-Agent.
-    url = 'https://www.reddit.com/r/{}/about.json'.format(subreddit)
+    url = 'https://www.reddit.com/r/{}/hot.json?limit=10'.format(subreddit)
     headers = requests.utils.default_headers()
 
     headers.update(
@@ -30,4 +31,4 @@ def top_ten(subreddit):
             title = children.get('data').get('title')
             print(title)
     else:
-        return print('None')
+        print('None')
