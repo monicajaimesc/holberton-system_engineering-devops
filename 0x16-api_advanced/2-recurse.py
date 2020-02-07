@@ -28,6 +28,8 @@ def recurse(subreddit, hot_list=[], after=None):
     if after is None:
         request = requests.get('https://www.reddit.com/r/{}/hot.json?limit=100'
                                .format(subreddit), headers=headers)
+        if request.status_code != 200:
+            return None
         data = request.json().get('data')
         childrens = data.get('children')
         if not childrens:
